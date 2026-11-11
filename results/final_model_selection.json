@@ -1,0 +1,23 @@
+{
+  "status": "frozen_before_held_out_evaluation",
+  "selection_metric": "mean_five_fold_development_cv_mae",
+  "candidates_compared": 15,
+  "winning_model": {
+    "model": "svr",
+    "representation": "hybrid",
+    "source": "initial",
+    "mean_cv_mae": 0.46302918939532933
+  },
+  "estimator": "SVR(C=10.0)",
+  "preprocessing": "ColumnTransformer(transformers=[('descriptors', StandardScaler(),\n                                 slice(0, 10, None)),\n                                ('fingerprints', 'passthrough',\n                                 slice(10, None, None))])",
+  "training_compounds": 969,
+  "held_out_test_compounds": 267,
+  "train_on": "all_development_compounds",
+  "test_used_for_model_selection": false,
+  "input_sha256": {
+    "benchmark_protocol": "9d0d5aaa5995a04dd9c659416c22e44d7b991ddd51596de7a65547f430dbd3e3",
+    "tuning_protocol": "5c39d74a41f535d96d1b5ad46fc2aecf10db332870c74815f94b441ae750a9f4",
+    "initial_summary": "bdbc5f5632bd50e9c1ac2254ae37f5893a4b1e79a5ebb8b8b07fb4007207368f",
+    "tuning_verification": "44af7d18696ec56cd072e8b66468bf055a96f423e79876a48a2374c12bdd4a28"
+  }
+}
