@@ -1,0 +1,22 @@
+{
+  "status": "selected_before_hyperparameter_tuning",
+  "selection_rule": "top_two_distinct_model_families",
+  "metric": "mean_development_cv_mae",
+  "finalists": [
+    {
+      "model": "svr",
+      "representation": "hybrid",
+      "initial_mean_cv_mae": 0.46302918939532933
+    },
+    {
+      "model": "xgboost",
+      "representation": "fingerprints",
+      "initial_mean_cv_mae": 0.49619204886679275
+    }
+  ],
+  "benchmark_protocol_sha256": "9d0d5aaa5995a04dd9c659416c22e44d7b991ddd51596de7a65547f430dbd3e3",
+  "tuning_protocol_sha256": "5c39d74a41f535d96d1b5ad46fc2aecf10db332870c74815f94b441ae750a9f4",
+  "fold_results_sha256": "3911d72e75dfcdaf29c37ee93bb3638b4b2620fdc9427a8e1cdb2975f39bde8d",
+  "summary_results_sha256": "bdbc5f5632bd50e9c1ac2254ae37f5893a4b1e79a5ebb8b8b07fb4007207368f",
+  "held_out_test_used": false
+}
