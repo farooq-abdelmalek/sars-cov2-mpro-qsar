@@ -31,6 +31,14 @@ RUN python -m venv /opt/qsar-workflow \
        --no-cache-dir -r requirements-workflow.txt \
     && /opt/qsar-workflow/bin/python -m pip check
 
+# Install automated testing tools in the scientific environment.
+# This separate layer preserves cached scientific dependencies.
+COPY requirements-test.txt ./
+
+RUN /opt/qsar-science/bin/python -m pip install \
+       --no-cache-dir -r requirements-test.txt \
+    && /opt/qsar-science/bin/python -m pip check
+
 # Include the Git-tracked project sources and archived results.
 # Local environments, databases, and artifacts are excluded.
 COPY . .
