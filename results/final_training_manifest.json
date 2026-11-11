@@ -1,0 +1,11 @@
+{
+  "model": "SVR + Hybrid",
+  "training_compounds": 969,
+  "n_features": 2058,
+  "fitted_descriptor_scaler_samples": 969,
+  "selected_model_cv_mae": 0.46302918939532933,
+  "selection_sha256": "9345e92dded9d018f85863cd680e9dd4c97c58b9f81e0bff621bf4b67cf96a4f",
+  "model_sha256": "2232e85035354f6bdc5fbaaadea8225d2fdf73d89cf2c402cac77d82eb1ee65f",
+  "sklearn_version": "1.9.1",
+  "test_evaluated": false
+}
