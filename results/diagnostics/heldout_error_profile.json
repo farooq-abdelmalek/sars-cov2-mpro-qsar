@@ -1,0 +1,159 @@
+{
+  "analysis": "descriptive_heldout_error_analysis",
+  "primary_test_evaluation_unchanged": true,
+  "source_predictions_sha256": "97822a436799eb1d4e373fb591c19f3999df021ae28f4c72ce99b82d9be56a54",
+  "source_metrics_sha256": "7bc8f098d43bcee6361a0226f2b949e115547717d0ac513a241688af2cac4ec3",
+  "overall": {
+    "n": 267,
+    "observed_pic50_min": 4.0030507515046185,
+    "observed_pic50_max": 8.573488738635424,
+    "observed_pic50_mean": 5.580414344200132,
+    "predicted_pic50_mean": 5.561981164861775,
+    "mae": 0.5013517132895648,
+    "rmse": 0.6861344433746943,
+    "mean_signed_error": -0.01843317933835696,
+    "median_absolute_error": 0.3637124251760744,
+    "fraction_overpredicted": 0.46441947565543074,
+    "fraction_absolute_error_above_1": 0.13857677902621723
+  },
+  "potency_quartiles": [
+    {
+      "group": "Q1_lowest_potency",
+      "n": 67,
+      "observed_pic50_min": 4.0030507515046185,
+      "observed_pic50_max": 4.876148359032914,
+      "observed_pic50_mean": 4.451304684934856,
+      "predicted_pic50_mean": 5.155799161088955,
+      "mae": 0.7292259338886132,
+      "rmse": 0.9299524896201301,
+      "mean_signed_error": 0.7044944761540994,
+      "median_absolute_error": 0.5900764612819804,
+      "fraction_overpredicted": 0.8805970149253731,
+      "fraction_absolute_error_above_1": 0.31343283582089554
+    },
+    {
+      "group": "Q2_lower_middle",
+      "n": 67,
+      "observed_pic50_min": 4.931814138253838,
+      "observed_pic50_max": 5.590066876668706,
+      "observed_pic50_mean": 5.290926868402244,
+      "predicted_pic50_mean": 5.391460736219622,
+      "mae": 0.28492660995074004,
+      "rmse": 0.3685781427739111,
+      "mean_signed_error": 0.100533867817377,
+      "median_absolute_error": 0.23747145160743077,
+      "fraction_overpredicted": 0.6268656716417911,
+      "fraction_absolute_error_above_1": 0.029850746268656716
+    },
+    {
+      "group": "Q3_upper_middle",
+      "n": 67,
+      "observed_pic50_min": 5.607303046740334,
+      "observed_pic50_max": 6.2373214362725635,
+      "observed_pic50_mean": 5.910062161978966,
+      "predicted_pic50_mean": 5.681543202945296,
+      "mae": 0.3204727212759562,
+      "rmse": 0.40397626385116736,
+      "mean_signed_error": -0.2285189590336688,
+      "median_absolute_error": 0.28896012993225106,
+      "fraction_overpredicted": 0.2537313432835821,
+      "fraction_absolute_error_above_1": 0.0
+    },
+    {
+      "group": "Q4_highest_potency",
+      "n": 66,
+      "observed_pic50_min": 6.2636034977233574,
+      "observed_pic50_max": 8.573488738635424,
+      "observed_pic50_mean": 6.685862893564523,
+      "predicted_pic50_mean": 6.026047928804306,
+      "mae": 0.6733487073573952,
+      "rmse": 0.850310820393603,
+      "mean_signed_error": -0.6598149647602185,
+      "median_absolute_error": 0.5583723167930397,
+      "fraction_overpredicted": 0.09090909090909091,
+      "fraction_absolute_error_above_1": 0.21212121212121213
+    }
+  ],
+  "ten_largest_absolute_errors": [
+    {
+      "compound_id": "MAT-POS-7ed7af85-1",
+      "chemical_group": "B0410",
+      "observed_pic50": 8.573488738635424,
+      "predicted_pic50": 5.338107794603819,
+      "signed_error": -3.235380944031605,
+      "absolute_error": 3.235380944031605
+    },
+    {
+      "compound_id": "LUO-POS-868e8996-8",
+      "chemical_group": "B0353",
+      "observed_pic50": 4.0726296369609765,
+      "predicted_pic50": 6.590005163721649,
+      "signed_error": 2.5173755267606728,
+      "absolute_error": 2.5173755267606728
+    },
+    {
+      "compound_id": "EDG-MED-5d232de5-2",
+      "chemical_group": "B0006",
+      "observed_pic50": 4.035740369803151,
+      "predicted_pic50": 6.298269731906227,
+      "signed_error": 2.2625293621030753,
+      "absolute_error": 2.2625293621030753
+    },
+    {
+      "compound_id": "EDJ-MED-fb79a796-3",
+      "chemical_group": "B0254",
+      "observed_pic50": 4.257274868695301,
+      "predicted_pic50": 6.248949149926714,
+      "signed_error": 1.991674281231413,
+      "absolute_error": 1.991674281231413
+    },
+    {
+      "compound_id": "MAT-POS-865c3497-2",
+      "chemical_group": "B0033",
+      "observed_pic50": 4.0030507515046185,
+      "predicted_pic50": 5.810262409398255,
+      "signed_error": 1.8072116578936361,
+      "absolute_error": 1.8072116578936361
+    },
+    {
+      "compound_id": "STE-KUL-d79e3d6a-3",
+      "chemical_group": "B0124",
+      "observed_pic50": 7.681936665037238,
+      "predicted_pic50": 5.908900428161974,
+      "signed_error": -1.7730362368752637,
+      "absolute_error": 1.7730362368752637
+    },
+    {
+      "compound_id": "MAT-POS-8a69d52e-3",
+      "chemical_group": "B0006",
+      "observed_pic50": 4.283162276700476,
+      "predicted_pic50": 5.944619293615587,
+      "signed_error": 1.6614570169151115,
+      "absolute_error": 1.6614570169151115
+    },
+    {
+      "compound_id": "MAT-POS-993cdc78-2",
+      "chemical_group": "B0010",
+      "observed_pic50": 4.159266765388193,
+      "predicted_pic50": 5.740399113340241,
+      "signed_error": 1.5811323479520478,
+      "absolute_error": 1.5811323479520478
+    },
+    {
+      "compound_id": "EDJ-MED-d08626de-4",
+      "chemical_group": "B0010",
+      "observed_pic50": 4.215382707367125,
+      "predicted_pic50": 5.702934353945158,
+      "signed_error": 1.4875516465780327,
+      "absolute_error": 1.4875516465780327
+    },
+    {
+      "compound_id": "DAR-DIA-0587064e-19",
+      "chemical_group": "B0028",
+      "observed_pic50": 4.437707135543525,
+      "predicted_pic50": 5.921766102293014,
+      "signed_error": 1.4840589667494886,
+      "absolute_error": 1.4840589667494886
+    }
+  ]
+}
