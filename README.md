@@ -239,7 +239,7 @@ Original repository:
 The upstream MIT license is retained in
 [docs/third_party/COVID_moonshot_data_clean_LICENSE](docs/third_party/COVID_moonshot_data_clean_LICENSE).
 
-Dataset attribution does not imply endorsement by the original contributors. A separate license for this repository's own source code must be selected before public release.
+Dataset attribution does not imply endorsement by the original contributors. The original code in this repository is released under the [MIT License](LICENSE). Third-party data and materials retain their respective copyright and attribution notices.
 
 ## References
 
