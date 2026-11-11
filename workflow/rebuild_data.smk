@@ -108,3 +108,107 @@ rule verify_rebuilt_compound_table:
             "PASS: Compound table reproduced byte-for-byte."
         )
         print("Original research data was not modified.")
+
+
+rule stage_split_script:
+    input:
+        original="scripts/prepare_split.py"
+    output:
+        staged="tracking/rebuild_workspace/scripts/prepare_split.py"
+    run:
+        destination = Path(output.staged)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(input.original, destination)
+
+
+rule rebuild_chemical_split:
+    input:
+        script="tracking/rebuild_workspace/scripts/prepare_split.py",
+        compounds=(
+            "tracking/rebuild_workspace/data/processed/"
+            "moonshot_quantitative_compounds.csv"
+        ),
+        compound_check=(
+            "tracking/rebuild_workspace/checks/"
+            "compound_table_verified.json"
+        )
+    output:
+        split=(
+            "tracking/rebuild_workspace/data/splits/"
+            "butina_070_seed42.csv"
+        ),
+        report=(
+            "tracking/rebuild_workspace/results/"
+            "data_qualification/split_summary.json"
+        )
+    shell:
+        ".venv/bin/python {input.script:q}"
+
+
+rule verify_rebuilt_split:
+    input:
+        rebuilt_split=(
+            "tracking/rebuild_workspace/data/splits/"
+            "butina_070_seed42.csv"
+        ),
+        original_split="data/splits/butina_070_seed42.csv",
+        rebuilt_report=(
+            "tracking/rebuild_workspace/results/"
+            "data_qualification/split_summary.json"
+        ),
+        original_report=(
+            "results/data_qualification/split_summary.json"
+        )
+    output:
+        "tracking/rebuild_workspace/checks/split_verified.json"
+    run:
+        import csv
+
+        # Compare both regenerated artifacts with the
+        # original files used in our frozen experiment.
+        for rebuilt, original in [
+            (input.rebuilt_split, input.original_split),
+            (input.rebuilt_report, input.original_report),
+        ]:
+            if checksum(rebuilt) != checksum(original):
+                raise ValueError(
+                    f"Rebuilt file differs from frozen reference: "
+                    f"{original}"
+                )
+
+        with open(input.rebuilt_split, newline="", encoding="utf-8") as f:
+            assignments = list(csv.DictReader(f))
+
+        train = [r for r in assignments if r["split"] == "train"]
+        test = [r for r in assignments if r["split"] == "test"]
+
+        if len(train) != 969 or len(test) != 267:
+            raise ValueError("Unexpected train/test counts")
+
+        train_groups = {r["group_id"] for r in train}
+        test_groups = {r["group_id"] for r in test}
+
+        if not train_groups.isdisjoint(test_groups):
+            raise ValueError("Chemical-group leakage detected")
+
+        report = {
+            "status": "PASS",
+            "stage": "chemical_group_split",
+            "development_compounds": len(train),
+            "held_out_compounds": len(test),
+            "split_sha256": checksum(input.rebuilt_split),
+            "summary_sha256": checksum(input.rebuilt_report),
+            "byte_identical_to_frozen_reference": True,
+            "original_files_modified": False,
+        }
+
+        destination = Path(output[0])
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(
+            json.dumps(report, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+        print("PASS: Chemical-group split reproduced.")
+        print("PASS: Train/test groups remain disjoint.")
+        print("PASS: Frozen files unchanged.")
