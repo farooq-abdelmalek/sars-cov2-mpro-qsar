@@ -306,3 +306,127 @@ rule verify_rebuilt_cv_folds:
         print("PASS: CV folds reproduced exactly.")
         print("PASS: CV summary reproduced exactly.")
         print("Original research files unchanged.")
+
+
+rule stage_feature_script:
+    input:
+        original="scripts/generate_features.py"
+    output:
+        staged=(
+            "tracking/rebuild_workspace/scripts/"
+            "generate_features.py"
+        )
+    run:
+        destination = Path(output.staged)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(input.original, destination)
+
+
+rule rebuild_molecular_features:
+    input:
+        script=(
+            "tracking/rebuild_workspace/scripts/"
+            "generate_features.py"
+        ),
+        compounds=(
+            "tracking/rebuild_workspace/data/processed/"
+            "moonshot_quantitative_compounds.csv"
+        ),
+        split=(
+            "tracking/rebuild_workspace/data/splits/"
+            "butina_070_seed42.csv"
+        ),
+        split_check=(
+            "tracking/rebuild_workspace/checks/"
+            "split_verified.json"
+        )
+    output:
+        features=(
+            "tracking/rebuild_workspace/data/features/"
+            "moonshot_features.npz"
+        ),
+        manifest=(
+            "tracking/rebuild_workspace/data/features/"
+            "feature_manifest.json"
+        )
+    shell:
+        "PYTHONPATH=src .venv/bin/python {input.script:q}"
+
+
+rule verify_rebuilt_features:
+    input:
+        rebuilt_features=(
+            "tracking/rebuild_workspace/data/features/"
+            "moonshot_features.npz"
+        ),
+        original_features=(
+            "data/features/moonshot_features.npz"
+        ),
+        rebuilt_manifest=(
+            "tracking/rebuild_workspace/data/features/"
+            "feature_manifest.json"
+        ),
+        original_manifest=(
+            "data/features/feature_manifest.json"
+        )
+    output:
+        "tracking/rebuild_workspace/checks/"
+        "features_verified.json"
+    run:
+        # First compare the feature archives themselves.
+        rebuilt_hash = checksum(input.rebuilt_features)
+        original_hash = checksum(input.original_features)
+
+        if rebuilt_hash != original_hash:
+            raise ValueError(
+                "Regenerated molecular features differ from "
+                "the frozen feature archive."
+            )
+
+        # The manifests must also agree.
+        rebuilt_manifest_hash = checksum(
+            input.rebuilt_manifest
+        )
+        original_manifest_hash = checksum(
+            input.original_manifest
+        )
+
+        if rebuilt_manifest_hash != original_manifest_hash:
+            raise ValueError(
+                "Regenerated feature manifest differs "
+                "from the frozen reference."
+            )
+
+        manifest = json.loads(
+            Path(input.rebuilt_manifest).read_text(
+                encoding="utf-8"
+            )
+        )
+
+        if manifest["feature_artifact_sha256"] != rebuilt_hash:
+            raise ValueError(
+                "Feature archive checksum does not "
+                "match its manifest."
+            )
+
+        report = {
+            "status": "PASS",
+            "stage": "molecular_features",
+            "feature_archive_sha256": rebuilt_hash,
+            "feature_manifest_sha256": rebuilt_manifest_hash,
+            "byte_identical_to_frozen_reference": True,
+            "original_files_modified": False,
+        }
+
+        destination = Path(output[0])
+        destination.parent.mkdir(
+            parents=True, exist_ok=True
+        )
+        destination.write_text(
+            json.dumps(report, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+        print("PASS: Molecular features reproduced exactly.")
+        print("PASS: Feature manifest reproduced exactly.")
+        print("PASS: Original research files unchanged.")
