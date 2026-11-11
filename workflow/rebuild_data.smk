@@ -212,3 +212,97 @@ rule verify_rebuilt_split:
         print("PASS: Chemical-group split reproduced.")
         print("PASS: Train/test groups remain disjoint.")
         print("PASS: Frozen files unchanged.")
+
+
+rule stage_cv_script:
+    input:
+        "scripts/prepare_cv_folds.py"
+    output:
+        "tracking/rebuild_workspace/scripts/prepare_cv_folds.py"
+    run:
+        destination = Path(output[0])
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(input[0], destination)
+
+
+rule rebuild_cv_folds:
+    input:
+        script=(
+            "tracking/rebuild_workspace/scripts/"
+            "prepare_cv_folds.py"
+        ),
+        compounds=(
+            "tracking/rebuild_workspace/data/processed/"
+            "moonshot_quantitative_compounds.csv"
+        ),
+        split=(
+            "tracking/rebuild_workspace/data/splits/"
+            "butina_070_seed42.csv"
+        ),
+        split_check=(
+            "tracking/rebuild_workspace/checks/"
+            "split_verified.json"
+        )
+    output:
+        folds=(
+            "tracking/rebuild_workspace/data/splits/"
+            "development_cv5.csv"
+        ),
+        report=(
+            "tracking/rebuild_workspace/results/"
+            "data_qualification/cv_fold_summary.json"
+        )
+    shell:
+        "PYTHONPATH=src .venv/bin/python {input.script:q}"
+
+
+rule verify_rebuilt_cv_folds:
+    input:
+        rebuilt_folds=(
+            "tracking/rebuild_workspace/data/splits/"
+            "development_cv5.csv"
+        ),
+        original_folds="data/splits/development_cv5.csv",
+        rebuilt_report=(
+            "tracking/rebuild_workspace/results/"
+            "data_qualification/cv_fold_summary.json"
+        ),
+        original_report=(
+            "results/data_qualification/cv_fold_summary.json"
+        )
+    output:
+        "tracking/rebuild_workspace/checks/"
+        "cv_folds_verified.json"
+    run:
+        comparisons = [
+            (input.rebuilt_folds, input.original_folds),
+            (input.rebuilt_report, input.original_report),
+        ]
+
+        for rebuilt, original in comparisons:
+            if checksum(rebuilt) != checksum(original):
+                raise ValueError(
+                    f"Rebuilt CV artifact differs: {original}"
+                )
+
+        report = {
+            "status": "PASS",
+            "stage": "development_cv_folds",
+            "cv_folds_sha256": checksum(input.rebuilt_folds),
+            "cv_summary_sha256": checksum(input.rebuilt_report),
+            "byte_identical_to_frozen_reference": True,
+            "original_files_modified": False,
+        }
+
+        destination = Path(output[0])
+        destination.parent.mkdir(
+            parents=True, exist_ok=True
+        )
+        destination.write_text(
+            json.dumps(report, indent=2) + "\n",
+            encoding="utf-8",
+        )
+
+        print("PASS: CV folds reproduced exactly.")
+        print("PASS: CV summary reproduced exactly.")
+        print("Original research files unchanged.")
