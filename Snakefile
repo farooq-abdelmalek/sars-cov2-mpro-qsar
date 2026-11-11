@@ -26,3 +26,8 @@ rule verify_frozen_snapshot:
     shell:
         "{PYTHON} scripts/verify_frozen_snapshot.py "
         "--output {output:q}"
+
+
+# Optional, isolated data-reproduction stages.
+# The default rule 'all' remains the frozen-result verifier.
+include: "workflow/rebuild_data.smk"
