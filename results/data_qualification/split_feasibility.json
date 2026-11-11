@@ -1,0 +1,29 @@
+{
+  "murcko": {
+    "train_compounds": 989,
+    "test_compounds": 247,
+    "test_fraction": 0.2,
+    "test_groups": 44,
+    "train_test_nearest_tanimoto_median": 0.704,
+    "train_test_nearest_tanimoto_p90": 0.814,
+    "fraction_test_similarity_ge_085": 0.032
+  },
+  "butina_0.70": {
+    "train_compounds": 969,
+    "test_compounds": 267,
+    "test_fraction": 0.216,
+    "test_groups": 136,
+    "train_test_nearest_tanimoto_median": 0.667,
+    "train_test_nearest_tanimoto_p90": 0.78,
+    "fraction_test_similarity_ge_085": 0.015
+  },
+  "butina_0.80": {
+    "train_compounds": 987,
+    "test_compounds": 249,
+    "test_fraction": 0.201,
+    "test_groups": 175,
+    "train_test_nearest_tanimoto_median": 0.754,
+    "train_test_nearest_tanimoto_p90": 0.821,
+    "fraction_test_similarity_ge_085": 0.056
+  }
+}

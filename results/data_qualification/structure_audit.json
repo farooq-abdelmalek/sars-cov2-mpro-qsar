@@ -1,0 +1,59 @@
+{
+  "rdkit_version": "2026.09.1",
+  "datasets": [
+    {
+      "file": "cdd_noncovalent_dates_2023_10_18_filt.csv",
+      "sha256": "777bd6b55260542438e6c464d9190234b684385b42f40c35db967b10cc2f0cef",
+      "total_rows": 2146,
+      "invalid_smiles_count": 0,
+      "invalid_examples": [],
+      "rows_with_CX_annotations": 384,
+      "rows_with_stereo_groups": 29,
+      "conflicting_compound_IDs": 0,
+      "conflict_examples": [],
+      "quantitative_rows": 1450,
+      "quantitative_unique_IDs": 1236,
+      "quantitative_compounds_analyzed": 1236,
+      "identical_structure_groups_across_IDs": 4,
+      "nonstereo_groups_with_multiple_stereo_identities": 78,
+      "scaffold_groups_including_acyclic": 551,
+      "singleton_scaffolds": 437,
+      "largest_scaffold_group": 92,
+      "acyclic_compounds": 2,
+      "nearest_neighbor_tanimoto": {
+        "p25": 0.729,
+        "median": 0.804,
+        "p75": 0.849,
+        "p95": 0.917,
+        "fraction_at_least_0.85": 0.246
+      }
+    },
+    {
+      "file": "cdd_achiral_enantiopure_dates_2023_10_18_filt.csv",
+      "sha256": "1ebfc80cfc112483347c2b060b17a7df04bca36701a6d319ca182084b58302fd",
+      "total_rows": 803,
+      "invalid_smiles_count": 0,
+      "invalid_examples": [],
+      "rows_with_CX_annotations": 52,
+      "rows_with_stereo_groups": 17,
+      "conflicting_compound_IDs": 0,
+      "conflict_examples": [],
+      "quantitative_rows": 462,
+      "quantitative_unique_IDs": 462,
+      "quantitative_compounds_analyzed": 462,
+      "identical_structure_groups_across_IDs": 3,
+      "nonstereo_groups_with_multiple_stereo_identities": 61,
+      "scaffold_groups_including_acyclic": 209,
+      "singleton_scaffolds": 153,
+      "largest_scaffold_group": 75,
+      "acyclic_compounds": 2,
+      "nearest_neighbor_tanimoto": {
+        "p25": 0.682,
+        "median": 0.78,
+        "p75": 0.841,
+        "p95": 0.896,
+        "fraction_at_least_0.85": 0.177
+      }
+    }
+  ]
+}

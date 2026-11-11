@@ -1,0 +1,61 @@
+{
+  "model": "DummyRegressor(strategy='median')",
+  "evaluation": "development-only group-aware 5-fold CV",
+  "primary_metric": "MAE in pIC50 units",
+  "n_development": 969,
+  "compound_sha256": "24dc994a47eebc27a40bbb104a6d9f651e73c0b80bbf7218a01d137956cafd7d",
+  "split_sha256": "591826468ec8cbafd647dfbb3940b7139a1641016d9f2511a84a0a136b26e119",
+  "fold_sha256": "401d781e12946c61c3ec293b0299a5cbb1b7a76501900164e561f47c3feab756",
+  "folds": [
+    {
+      "fold": 1,
+      "n_train": 775,
+      "n_validation": 194,
+      "training_median_pic50": 5.596289993628079,
+      "mae": 0.886872330266656,
+      "rmse": 1.0156910562225439,
+      "r2": -0.09864123789039692
+    },
+    {
+      "fold": 2,
+      "n_train": 775,
+      "n_validation": 194,
+      "training_median_pic50": 5.73754891026957,
+      "mae": 0.8196088641131913,
+      "rmse": 0.9568745314493288,
+      "r2": -0.2241658620912852
+    },
+    {
+      "fold": 3,
+      "n_train": 775,
+      "n_validation": 194,
+      "training_median_pic50": 5.655607726314889,
+      "mae": 0.6609791134614962,
+      "rmse": 0.785532336745643,
+      "r2": -0.004521511777239473
+    },
+    {
+      "fold": 4,
+      "n_train": 775,
+      "n_validation": 194,
+      "training_median_pic50": 5.543633966870957,
+      "mae": 0.8161101656254082,
+      "rmse": 0.9147241863691516,
+      "r2": -0.11524882905281375
+    },
+    {
+      "fold": 5,
+      "n_train": 776,
+      "n_validation": 193,
+      "training_median_pic50": 5.687189459287547,
+      "mae": 0.760759361954132,
+      "rmse": 0.89385917593153,
+      "r2": -0.019055318517517073
+    }
+  ],
+  "mean_fold_mae": 0.7888659670841769,
+  "std_fold_mae": 0.08431732899824307,
+  "pooled_oof_mae": 0.7888949728686246,
+  "pooled_oof_rmse": 0.9165385369770641,
+  "pooled_oof_r2": -0.03793545462785142
+}

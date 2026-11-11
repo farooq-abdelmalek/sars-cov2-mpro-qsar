@@ -1,0 +1,32 @@
+{
+  "status": "provisional",
+  "seed": 42,
+  "rdkit_version": "2026.09.1",
+  "grouping": "Butina, Morgan radius 2, 2048 bits, no chirality",
+  "similarity_threshold": 0.7,
+  "source_sha256": "24dc994a47eebc27a40bbb104a6d9f651e73c0b80bbf7218a01d137956cafd7d",
+  "train_groups": 282,
+  "test_groups": 136,
+  "train": {
+    "compounds": 969,
+    "pic50_min": 4.01,
+    "pic50_q25": 4.896,
+    "pic50_median": 5.642,
+    "pic50_q75": 6.438,
+    "pic50_max": 7.706,
+    "replicate_compounds": 129,
+    "OR_stereo_compounds": 9,
+    "compounds_with_censored_records": 20
+  },
+  "test": {
+    "compounds": 267,
+    "pic50_min": 4.003,
+    "pic50_q25": 4.876,
+    "pic50_median": 5.59,
+    "pic50_q75": 6.226,
+    "pic50_max": 8.573,
+    "replicate_compounds": 33,
+    "OR_stereo_compounds": 4,
+    "compounds_with_censored_records": 6
+  }
+}

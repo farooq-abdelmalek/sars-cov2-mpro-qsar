@@ -1,0 +1,47 @@
+{
+  "scikit_learn_version": "1.9.1",
+  "method": "GroupKFold",
+  "n_splits": 5,
+  "development_compounds": 969,
+  "held_out_test_compounds": 267,
+  "source_compound_sha256": "24dc994a47eebc27a40bbb104a6d9f651e73c0b80bbf7218a01d137956cafd7d",
+  "source_split_sha256": "591826468ec8cbafd647dfbb3940b7139a1641016d9f2511a84a0a136b26e119",
+  "folds": [
+    {
+      "fold": 1,
+      "training_compounds": 775,
+      "validation_compounds": 194,
+      "training_groups": 228,
+      "validation_groups": 54
+    },
+    {
+      "fold": 2,
+      "training_compounds": 775,
+      "validation_compounds": 194,
+      "training_groups": 226,
+      "validation_groups": 56
+    },
+    {
+      "fold": 3,
+      "training_compounds": 775,
+      "validation_compounds": 194,
+      "training_groups": 224,
+      "validation_groups": 58
+    },
+    {
+      "fold": 4,
+      "training_compounds": 775,
+      "validation_compounds": 194,
+      "training_groups": 224,
+      "validation_groups": 58
+    },
+    {
+      "fold": 5,
+      "training_compounds": 776,
+      "validation_compounds": 193,
+      "training_groups": 226,
+      "validation_groups": 56
+    }
+  ],
+  "group_leakage_check": "PASS"
+}

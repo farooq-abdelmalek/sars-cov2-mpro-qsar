@@ -1,0 +1,118 @@
+{
+  "status": "frozen_initial_benchmark",
+  "task": "SARS-CoV-2 Mpro quantitative pIC50 regression",
+  "grouping": "Butina Tanimoto 0.70",
+  "n_development": 969,
+  "n_test": 267,
+  "n_cv_folds": 5,
+  "primary_metric": "mean_fold_mae",
+  "secondary_metrics": [
+    "mean_fold_rmse",
+    "mean_fold_r2",
+    "fold_metric_std"
+  ],
+  "reference_baseline_mean_mae": 0.7889,
+  "model_selection": "development_cv_only",
+  "held_out_test_evaluation": "after_final_model_freeze",
+  "initial_configurations": [
+    {
+      "model": "ridge",
+      "representation": "descriptors",
+      "estimator": "Ridge()",
+      "preprocessing": "StandardScaler()"
+    },
+    {
+      "model": "ridge",
+      "representation": "fingerprints",
+      "estimator": "Ridge()",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "ridge",
+      "representation": "hybrid",
+      "estimator": "Ridge()",
+      "preprocessing": "ColumnTransformer(transformers=[('descriptors', StandardScaler(),\n                                 slice(0, 10, None)),\n                                ('fingerprints', 'passthrough',\n                                 slice(10, None, None))])"
+    },
+    {
+      "model": "svr",
+      "representation": "descriptors",
+      "estimator": "SVR(C=10.0)",
+      "preprocessing": "StandardScaler()"
+    },
+    {
+      "model": "svr",
+      "representation": "fingerprints",
+      "estimator": "SVR(C=10.0)",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "svr",
+      "representation": "hybrid",
+      "estimator": "SVR(C=10.0)",
+      "preprocessing": "ColumnTransformer(transformers=[('descriptors', StandardScaler(),\n                                 slice(0, 10, None)),\n                                ('fingerprints', 'passthrough',\n                                 slice(10, None, None))])"
+    },
+    {
+      "model": "random_forest",
+      "representation": "descriptors",
+      "estimator": "RandomForestRegressor(max_features='sqrt', min_samples_leaf=2, n_estimators=300,\n                      n_jobs=2, random_state=42)",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "random_forest",
+      "representation": "fingerprints",
+      "estimator": "RandomForestRegressor(max_features='sqrt', min_samples_leaf=2, n_estimators=300,\n                      n_jobs=2, random_state=42)",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "random_forest",
+      "representation": "hybrid",
+      "estimator": "RandomForestRegressor(max_features='sqrt', min_samples_leaf=2, n_estimators=300,\n                      n_jobs=2, random_state=42)",
+      "preprocessing": "ColumnTransformer(transformers=[('descriptors', 'passthrough',\n                                 slice(0, 10, None)),\n                                ('fingerprints', 'passthrough',\n                                 slice(10, None, None))])"
+    },
+    {
+      "model": "xgboost",
+      "representation": "descriptors",
+      "estimator": "XGBRegressor(base_score=None, booster=None, callbacks=None,\n             colsample_bylevel=None, colsample_bynode=None,\n             colsample_bytree=0.8, device=None, early_stopping_rounds=None,\n             enable_categorical=True, eval_metric=None, feature_types=None,\n             feature_weights=None, gamma=None, grow_policy=None,\n             importance_type=None, interaction_constraints=None,\n             learning_rate=0.05, max_bin=None, max_cat_threshold=None,\n             max_cat_to_onehot=None, max_delta_step=None, max_depth=3,\n             max_leaves=None, min_child_weight=3, missing=nan,\n             monotone_constraints=None, multi_strategy=None, n_estimators=300,\n             n_jobs=2, num_parallel_tree=None, ...)",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "xgboost",
+      "representation": "fingerprints",
+      "estimator": "XGBRegressor(base_score=None, booster=None, callbacks=None,\n             colsample_bylevel=None, colsample_bynode=None,\n             colsample_bytree=0.8, device=None, early_stopping_rounds=None,\n             enable_categorical=True, eval_metric=None, feature_types=None,\n             feature_weights=None, gamma=None, grow_policy=None,\n             importance_type=None, interaction_constraints=None,\n             learning_rate=0.05, max_bin=None, max_cat_threshold=None,\n             max_cat_to_onehot=None, max_delta_step=None, max_depth=3,\n             max_leaves=None, min_child_weight=3, missing=nan,\n             monotone_constraints=None, multi_strategy=None, n_estimators=300,\n             n_jobs=2, num_parallel_tree=None, ...)",
+      "preprocessing": "FunctionTransformer()"
+    },
+    {
+      "model": "xgboost",
+      "representation": "hybrid",
+      "estimator": "XGBRegressor(base_score=None, booster=None, callbacks=None,\n             colsample_bylevel=None, colsample_bynode=None,\n             colsample_bytree=0.8, device=None, early_stopping_rounds=None,\n             enable_categorical=True, eval_metric=None, feature_types=None,\n             feature_weights=None, gamma=None, grow_policy=None,\n             importance_type=None, interaction_constraints=None,\n             learning_rate=0.05, max_bin=None, max_cat_threshold=None,\n             max_cat_to_onehot=None, max_delta_step=None, max_depth=3,\n             max_leaves=None, min_child_weight=3, missing=nan,\n             monotone_constraints=None, multi_strategy=None, n_estimators=300,\n             n_jobs=2, num_parallel_tree=None, ...)",
+      "preprocessing": "ColumnTransformer(transformers=[('descriptors', 'passthrough',\n                                 slice(0, 10, None)),\n                                ('fingerprints', 'passthrough',\n                                 slice(10, None, None))])"
+    },
+    {
+      "model": "tanimoto_knn",
+      "representation": "fingerprints",
+      "estimator": "TanimotoKNNRegressor()",
+      "preprocessing": "none"
+    }
+  ],
+  "initial_model_fits": 65,
+  "software_versions": {
+    "rdkit": "2026.09.1",
+    "scikit_learn": "1.9.1",
+    "xgboost": "3.4.1"
+  },
+  "input_and_code_sha256": {
+    "compounds": "24dc994a47eebc27a40bbb104a6d9f651e73c0b80bbf7218a01d137956cafd7d",
+    "outer_split": "591826468ec8cbafd647dfbb3940b7139a1641016d9f2511a84a0a136b26e119",
+    "cv_folds": "401d781e12946c61c3ec293b0299a5cbb1b7a76501900164e561f47c3feab756",
+    "features": "d484c3069bc5550161d1c83ba981b59bbfb0ceb6d1e5f9b3fb87007afb8bfa62",
+    "feature_manifest": "c687318d0e9edd6e966ff2071e27d64007ab9b2d3a5ca34edc2ab26a7425fe2a",
+    "model_code": "0bd7464bcc63027cd569d8a633e60cb231f2934d523c794eb2e0cfe91431a7f0",
+    "preprocessing_code": "487e27502cdbd3ee2846d654ac7124647055b722709cb2885071ee1c1d7b7256",
+    "knn_code": "371e7cf0039349a902e13ed70efa72cb4ff3260e79c817c82b9d1498d7a14bef",
+    "feature_code": "6b61cea6873c2d491dfaa2791c70c496fdc132cc2155ce1ceb130f33f08b5c9c"
+  },
+  "tuning": {
+    "status": "not_yet_specified",
+    "rule": "freeze search space and budget before tuning"
+  }
+}

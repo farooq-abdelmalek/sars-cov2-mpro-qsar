@@ -1,0 +1,44 @@
+{
+  "rdkit_version": "2026.09.1",
+  "compound_ids": 1236,
+  "unique_connectivities": 1102,
+  "fingerprint": "Morgan radius=2, 2048 bits, no chirality",
+  "methods": {
+    "connectivity": {
+      "groups": 1102,
+      "singleton_groups": 1024,
+      "largest_group": 8,
+      "median_group_size": 1.0,
+      "cross_group_nearest_tanimoto_median": 0.787,
+      "cross_group_nearest_tanimoto_p90": 0.88,
+      "fraction_cross_group_similarity_ge_085": 0.201
+    },
+    "murcko": {
+      "groups": 551,
+      "singleton_groups": 437,
+      "largest_group": 92,
+      "median_group_size": 1,
+      "cross_group_nearest_tanimoto_median": 0.726,
+      "cross_group_nearest_tanimoto_p90": 0.841,
+      "fraction_cross_group_similarity_ge_085": 0.084
+    },
+    "butina_0.70": {
+      "groups": 418,
+      "singleton_groups": 282,
+      "largest_group": 87,
+      "median_group_size": 1.0,
+      "cross_group_nearest_tanimoto_median": 0.691,
+      "cross_group_nearest_tanimoto_p90": 0.809,
+      "fraction_cross_group_similarity_ge_085": 0.037
+    },
+    "butina_0.80": {
+      "groups": 777,
+      "singleton_groups": 621,
+      "largest_group": 21,
+      "median_group_size": 1,
+      "cross_group_nearest_tanimoto_median": 0.756,
+      "cross_group_nearest_tanimoto_p90": 0.821,
+      "fraction_cross_group_similarity_ge_085": 0.057
+    }
+  }
+}

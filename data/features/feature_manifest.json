@@ -1,0 +1,28 @@
+{
+  "source_sha256": "24dc994a47eebc27a40bbb104a6d9f651e73c0b80bbf7218a01d137956cafd7d",
+  "split_sha256": "591826468ec8cbafd647dfbb3940b7139a1641016d9f2511a84a0a136b26e119",
+  "feature_artifact_sha256": "d484c3069bc5550161d1c83ba981b59bbfb0ceb6d1e5f9b3fb87007afb8bfa62",
+  "rdkit_version": "2026.09.1",
+  "n_compounds": 1236,
+  "n_unique_connectivities": 1102,
+  "descriptor_names": [
+    "MolWt",
+    "MolLogP",
+    "TPSA",
+    "NumHDonors",
+    "NumHAcceptors",
+    "NumRotatableBonds",
+    "RingCount",
+    "NumAromaticRings",
+    "FractionCSP3",
+    "HeavyAtomCount"
+  ],
+  "fingerprint": {
+    "type": "Morgan binary",
+    "radius": 2,
+    "size": 2048,
+    "include_chirality": false
+  },
+  "molecular_input": "connectivity",
+  "learned_preprocessing": false
+}
