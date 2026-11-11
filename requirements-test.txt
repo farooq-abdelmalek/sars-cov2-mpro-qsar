@@ -1,0 +1,2 @@
+# Test runner; scientific dependencies remain pinned separately.
+pytest==9.2.0
