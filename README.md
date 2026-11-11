@@ -142,6 +142,13 @@ Full experimental outputs:
 - [Tuning verification](results/tuning/tuning_verification.json)
 - [Final model selection](results/final_model_selection.json)
 
+### Initial model benchmark
+
+![Comparison of 13 model-feature configurations](docs/figures/02_model_benchmark.png)
+
+The figure compares the 13 initial configurations using mean
+five-fold development CV MAE. Lower values indicate better performance.
+
 ## 5. Held-out evaluation and limitations
 
 The primary held-out results are:
@@ -172,6 +179,19 @@ Archived evidence:
 - [Test metrics](results/final_test_metrics.json)
 - [Compound-level test predictions](results/final_test_predictions.csv)
 - [Error analysis](results/diagnostics/heldout_error_profile.json)
+
+### Visual analysis of held-out predictions
+
+![Observed versus predicted pIC50](docs/figures/01_observed_vs_predicted.png)
+
+Observed versus predicted pIC50 for the 267 held-out compounds.
+The dashed diagonal represents perfect prediction.
+
+![Prediction errors across potency quartiles](docs/figures/03_errors_by_potency.png)
+
+Errors are larger at the extremes of observed potency.
+The model generally overpredicts weak compounds and
+underpredicts highly potent compounds.
 
 ## 6. Reproducing the verified workflow
 
