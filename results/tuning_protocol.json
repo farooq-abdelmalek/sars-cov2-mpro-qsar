@@ -1,0 +1,78 @@
+{
+  "status": "predeclared_before_model_benchmark",
+  "seed": 42,
+  "evaluation": {
+    "data": "development_only",
+    "cv_file": "data/splits/development_cv5.csv",
+    "primary_metric": "mean_fold_mae",
+    "direction": "minimize",
+    "test_set_access": "prohibited"
+  },
+  "finalist_selection": {
+    "number_of_families": 2,
+    "rule": "Rank model families by their best initial model-representation mean CV MAE. Select the top two distinct families.",
+    "representation": "Keep the best initial representation for each selected family",
+    "tie_break": "Use the order ridge, svr, random_forest, xgboost, tanimoto_knn"
+  },
+  "optimization": {
+    "method": "Optuna TPESampler",
+    "trials_per_finalist": 20,
+    "cv_folds_per_trial": 5,
+    "search_spaces": {
+      "ridge": {
+        "alpha": {
+          "type": "float_log",
+          "low": 0.001,
+          "high": 1000.0
+        }
+      },
+      "svr": {
+        "C": {
+          "type": "float_log",
+          "low": 0.1,
+          "high": 100.0
+        },
+        "epsilon": {
+          "type": "float",
+          "low": 0.01,
+          "high": 0.5
+        },
+        "gamma": {
+          "type": "float_log",
+          "low": 0.0001,
+          "high": 0.1
+        }
+      },
+      "random_forest": {
+        "n_estimators": [200, 400, 600],
+        "max_depth": [null, 5, 10, 20],
+        "min_samples_leaf": [1, 2, 4],
+        "max_features": ["sqrt", 0.5, 1.0]
+      },
+      "xgboost": {
+        "n_estimators": [200, 400, 600],
+        "max_depth": [2, 3, 4, 5],
+        "learning_rate": [0.02, 0.05, 0.1],
+        "min_child_weight": [1, 3, 5],
+        "subsample": [0.7, 0.85, 1.0],
+        "colsample_bytree": [0.7, 0.85, 1.0],
+        "reg_lambda": [0.1, 1.0, 10.0]
+      },
+      "tanimoto_knn": {
+        "method": "exhaustive_grid",
+        "n_neighbors": [1, 3, 5, 7, 11, 15],
+        "weighting": "tanimoto_similarity"
+      }
+    }
+  },
+  "final_selection": {
+    "rule": "Lowest mean CV MAE among tuned finalists and initial configurations",
+    "secondary_reporting": [
+      "RMSE",
+      "R2",
+      "fold_standard_deviation",
+      "paired_fold_differences"
+    ],
+    "test_evaluation": "once_after_final_configuration_is_frozen"
+  }
+}
