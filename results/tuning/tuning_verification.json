@@ -1,0 +1,46 @@
+{
+  "status": "verified_before_final_model_freeze",
+  "tuning_protocol_sha256": "5c39d74a41f535d96d1b5ad46fc2aecf10db332870c74815f94b441ae750a9f4",
+  "selection_sha256": "0334359f6493a8c35fdb0ab81fe0e465801544e0f3f804df5bef00d3ba8d5efd",
+  "studies": [
+    {
+      "model": "svr",
+      "representation": "hybrid",
+      "completed_trials": 20,
+      "initial_cv_mae": 0.46302918939532933,
+      "best_tuned_cv_mae": 0.4675423847411161,
+      "best_trial_number": 13,
+      "best_parameters": {
+        "C": 96.84865544445043,
+        "epsilon": 0.2029561946650355,
+        "gamma": 0.017465561885775294
+      },
+      "best_mean_cv_rmse": 0.6011918318617842,
+      "best_mean_cv_r2": 0.5224258015444841,
+      "trial_csv_sha256": "0b656b40781c762a3ba624909b1b03e4302ec6531c5181a9d1b73f563039b08e",
+      "optuna_csv_mlflow_consistency": "PASS"
+    },
+    {
+      "model": "xgboost",
+      "representation": "fingerprints",
+      "completed_trials": 20,
+      "initial_cv_mae": 0.49619204886679275,
+      "best_tuned_cv_mae": 0.47928762391362617,
+      "best_trial_number": 9,
+      "best_parameters": {
+        "n_estimators": 200,
+        "max_depth": 4,
+        "learning_rate": 0.1,
+        "min_child_weight": 5,
+        "subsample": 0.7,
+        "colsample_bytree": 0.7,
+        "reg_lambda": 10.0
+      },
+      "best_mean_cv_rmse": 0.614895498232153,
+      "best_mean_cv_r2": 0.49956944374727164,
+      "trial_csv_sha256": "17fa6706e897dd8844c7430dbd41ad4de6468c4a3f1751806d6fc6319b88434c",
+      "optuna_csv_mlflow_consistency": "PASS"
+    }
+  ],
+  "held_out_test_evaluated": false
+}
