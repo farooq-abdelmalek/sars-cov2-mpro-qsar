@@ -1,0 +1,16 @@
+{
+  "evaluation": "primary_held_out_test",
+  "model": "SVR + Hybrid",
+  "n_training_compounds": 969,
+  "n_test_compounds": 267,
+  "n_test_groups": 136,
+  "mae": 0.5013517132895648,
+  "rmse": 0.6861344433746943,
+  "r2": 0.35793881406172334,
+  "mean_signed_error": -0.01843317933835696,
+  "median_absolute_error": 0.3637124251760744,
+  "p90_absolute_error": 1.116777577366674,
+  "selection_sha256": "9345e92dded9d018f85863cd680e9dd4c97c58b9f81e0bff621bf4b67cf96a4f",
+  "model_sha256": "2232e85035354f6bdc5fbaaadea8225d2fdf73d89cf2c402cac77d82eb1ee65f",
+  "test_split_sha256": "591826468ec8cbafd647dfbb3940b7139a1641016d9f2511a84a0a136b26e119"
+}
