@@ -9,7 +9,14 @@ PYTHON = ".venv/bin/python"
 
 rule all:
     input:
-        "tracking/workflow/frozen_snapshot_verified.json"
+        # Verify the original, frozen research record.
+        "tracking/workflow/frozen_snapshot_verified.json",
+
+        # Independently reproduce data preparation.
+        "tracking/rebuild_workspace/checks/compound_table_verified.json",
+        "tracking/rebuild_workspace/checks/split_verified.json",
+        "tracking/rebuild_workspace/checks/cv_folds_verified.json",
+        "tracking/rebuild_workspace/checks/features_verified.json"
 
 
 rule verify_frozen_snapshot:
