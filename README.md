@@ -2,6 +2,8 @@
 
 **A Reproducible QSAR Study with Chemical-Group Validation**
 
+[![QSAR CI](https://github.com/farooq-abdelmalek/sars-cov2-mpro-qsar/actions/workflows/ci.yml/badge.svg)](https://github.com/farooq-abdelmalek/sars-cov2-mpro-qsar/actions/workflows/ci.yml)
+
 **Reproducible molecular machine learning for predicting SARS-CoV-2 main protease inhibitor potency.**
 
 This project investigates how well conventional machine-learning models predict experimental pIC50 values from molecular structure, particularly when evaluated on held-out chemical groups.
